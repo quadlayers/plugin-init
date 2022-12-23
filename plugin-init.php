@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Plugin Name:       Wp Plugin Name
- * Plugin URI:        https://quadlayers.com/wp-plugin-name
- * Description:       Description WpPluginName
+ * Plugin Name:       Plugin Init
+ * Plugin URI:        https://quadlayers.com/plugin-init
+ * Description:       Plugin Init description
  * Version:           1.0.0
  * Author:            QuadLayers
  * Author URI:        https://quadlayers.com
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       wp-plugin-name
+ * Text Domain:       plugin-init
  * Domain Path:       /languages
  */
 
@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
-* 	Definition globals variables
+*   Definition globals variables
 */
 
-define( 'QLXXX_PLUGIN_NAME', 'Wp Plugin Name' );
+define( 'QLXXX_PLUGIN_NAME', 'Plugin Init' );
 define( 'QLXXX_PLUGIN_VERSION', '1.0.0' );
 define( 'QLXXX_PLUGIN_FILE', __FILE__ );
 define( 'QLXXX_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR );
@@ -39,14 +39,25 @@ define( 'QLXXX_DOCUMENTATION_ACCOUNT_URL', 'https://quadlayers.com/documentation
 define( 'QLXXX_GROUP_URL', 'https://www.facebook.com/groups/quadlayers' );
 define( 'QLXXX_DEVELOPER', false );
 
-define( 'QLXXX_PREMIUM_SELL_SLUG', 'wp-plugin-name-pro' );
+define( 'QLXXX_PREMIUM_SELL_SLUG', 'plugin-init-pro' );
 define( 'QLXXX_PREMIUM_SELL_NAME', 'Plugin Name Pro' );
-define( 'QLXXX_PREMIUM_SELL_URL', 'https://quadlayers.com/wp-plugin-name-pro' );
+define( 'QLXXX_PREMIUM_SELL_URL', 'https://quadlayers.com/plugin-init-pro' );
 
 /**
-* 	Load plugin
-*/
-require_once QLXXX_PLUGIN_DIR . 'lib/load.php';
+ * Load composer autoload
+ */
+require_once 'vendor/autoload.php';
+/**
+ * Load composer packages
+ */
+require_once 'composer/wp-i18n-map.php';
+require_once 'composer/wp-dashboard-widget-news.php';
+require_once 'composer/wp-plugin-table-links.php';
+require_once 'composer/wp-notice-plugin-required.php';
+/**
+ * Load plugin classes
+ */
+require_once 'src/App.php';
 
 register_activation_hook(
 	QLXXX_PLUGIN_FILE,

@@ -1,7 +1,7 @@
-﻿=== Wp Plugin Name ===
+﻿=== Plugin Init ===
 Contributors: quadlayers
 Donate link: https://quadlayers.com/
-Tags: Description WpPluginName
+Tags: Description Plugin Init description
 Requires at least: XX
 Tested up to: XX
 Stable tag: 1.0.0

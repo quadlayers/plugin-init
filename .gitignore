@@ -1,2 +1,7 @@
-# IDE files
-.vscode
+.developer/node_modules
+/build/
+package-lock.json
+/vendor/
+/jetpack_vendor/
+composer.lock
+phpcs_error.csv
