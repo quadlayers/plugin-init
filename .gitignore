@@ -2,6 +2,7 @@
 /build/
 
 # Project files
+.developer
 /node_modules
 package-lock.json
 /vendor/
