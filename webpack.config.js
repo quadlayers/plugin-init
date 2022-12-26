@@ -10,11 +10,11 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			'index': path.resolve(__dirname, 'src', './frontend/index.js'),
+			'index': path.resolve(__dirname, 'src/resources/views', './frontend/index.js'),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, '../build/frontend/js/'),
+			path: path.resolve(__dirname, 'build/frontend/js/'),
 		},
 		optimization: {
 			minimize: isProduction,
@@ -27,11 +27,11 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			'index': path.resolve(__dirname, 'src', './frontend/style.scss'),
+			'index': path.resolve(__dirname, 'src/resources/views', './frontend/style.scss'),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, '../build/frontend/css/'),
+			path: path.resolve(__dirname, 'build/frontend/css/'),
 		},
 		module: {
 			...defaultConfig.module,
@@ -66,11 +66,11 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			'index': path.resolve(__dirname, 'src', './backend/index.js'),
+			'index': path.resolve(__dirname, 'src/resources/views', './backend/index.js'),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, '../build/backend/js/'),
+			path: path.resolve(__dirname, 'build/backend/js/'),
 			library: ['tiktok', 'backend'],
 			libraryTarget: 'window',
 		},
@@ -81,11 +81,11 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			'index': path.resolve(__dirname, 'src', './backend/style.scss'),
+			'index': path.resolve(__dirname, 'src/resources/views', './backend/style.scss'),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, '../build/backend/css/'),
+			path: path.resolve(__dirname, 'build/backend/css/'),
 		},
 		module: {
 			...defaultConfig.module,
@@ -116,4 +116,4 @@ module.exports = [
 			}),
 		]
 	},
-] 
+]

@@ -1,7 +1,15 @@
-.developer/node_modules
+# Built packages
 /build/
+
+# Project files
+/node_modules
 package-lock.json
 /vendor/
 /jetpack_vendor/
 composer.lock
+
+#PHPcs
 phpcs_error.csv
+
+# IDE files
+.vscode/

@@ -5,22 +5,32 @@
 	"main": "index.js",
 	"scripts": {
 		"install": "npm install --force",
+		"prepare": "composer install --ignore-platform-reqs && composer dump-autoload && husky install",
 		"start": "wp-scripts start",
+		"docker": "wp-env",
+		"test": "jest",
 		"build": "wp-scripts build"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",
 	"devDependencies": {
+		"@wordpress/env": "^5.8.0",
+		"@wordpress/prettier-config": "^2.6.0",
 		"@wordpress/scripts": "^23.6.0",
+		"@wordpress/stylelint-config": "^21.6.0",
 		"classnames": "^2.3.1",
 		"css-loader": "^6.7.1",
 		"depcheck": "^1.4.3",
+		"eslint": "^8.30.0",
+		"husky": "^8.0.2",
+		"lint-staged": "^13.1.0",
 		"mini-css-extract-plugin": "^2.6.1",
 		"node-sass-glob-importer": "^5.3.2",
+		"prettier": "2.8.1",
 		"sass-loader": "^13.0.2",
+		"stylelint": "^14.16.0",
+		"stylelint-config-standard": "^29.0.0",
 		"webpack": "^5.74.0",
 		"webpack-remove-empty-scripts": "^0.8.1"
-	},
-	"dependencies": {
 	}
 }
