@@ -4,12 +4,14 @@
 	"description": "Plugin Init",
 	"main": "index.js",
 	"scripts": {
-		"install": "npm install --force",
-		"prepare": "composer install --ignore-platform-reqs && composer dump-autoload && husky install",
+		"setup": "npm run clean:files & npm install --force && npm run install:extra",
+		"clean:files": "rd /s /q build & rd /s /q jetpack_vendor & rd /s /q node_modules & rd /s /q vendor & del /f /q composer.lock & del /f /q package-lock.json",
+		"install:extra": "composer install && composer dump-autoload && husky install",
 		"start": "wp-scripts start",
 		"docker": "wp-env",
 		"test": "jest",
-		"build": "wp-scripts build"
+		"build": "rd /s /q build & wp-scripts build",
+		"build:zip": "npm run build && rd /s /q $npm_package_name.zip && Compress-Archive -Path $npm_package_name.zip -DestinationPath src"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",
