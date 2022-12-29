@@ -1,14 +1,14 @@
 {
-    "name": "quadlayers/plugin-init",
-    "description": "Plugin Init",
-    "type": "project",
-    "authors": [
-        {
-            "name": "QuadLayers",
-            "email": "noreply@quadlayers.com"
-        }
-    ],
-    "minimum-stability": "stable",
+	"name": "quadlayers/plugin-init",
+	"description": "Plugin Init",
+	"type": "project",
+	"authors": [
+		{
+			"name": "QuadLayers",
+			"email": "noreply@quadlayers.com"
+		}
+	],
+	"minimum-stability": "stable",
 	"config": {
 		"allow-plugins": {
 			"automattic/jetpack-composer-plugin": true
@@ -19,17 +19,17 @@
 			"QuadLayers\\PluginInit\\": "src/"
 		}
 	},
-    "require": {
+	"require": {
 		"automattic/jetpack-composer-plugin": "*",
 		"automattic/jetpack-assets": "*",
 		"quadlayers/wp-dashboard-widget-news": "^1.0.0",
 		"quadlayers/wp-notice-plugin-required": "^2.0.0",
 		"quadlayers/wp-plugin-table-links": "^1.0.0"
-    },	
+	},
 	"extra": {
 		"wp-plugin-slug": "plugin-init"
 	},
-    "require-dev": {
-        "phpunit/phpunit": "9"
-    }
+	"require-dev": {
+		"phpunit/phpunit": "9"
+	}
 }

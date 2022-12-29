@@ -9,8 +9,12 @@ package-lock.json
 /jetpack_vendor/
 composer.lock
 
-#PHPcs
+# PHPcs
 phpcs_error.csv
 
 # IDE files
 .vscode/
+
+# .zip del plungin generado
+*.zip
+/plugin-init/

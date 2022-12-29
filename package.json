@@ -4,14 +4,17 @@
 	"description": "Plugin Init",
 	"main": "index.js",
 	"scripts": {
+		"setup:hard": "npm run clean:hard & node ./bin/buildCleanHard.js & npm install --force && npm run install:extra",
 		"setup": "npm run clean:files & npm install --force && npm run install:extra",
-		"clean:files": "rd /s /q build & rd /s /q jetpack_vendor & rd /s /q node_modules & rd /s /q vendor & del /f /q composer.lock & del /f /q package-lock.json",
+		"clean:files": "del /f /q composer.lock & del /f /q package-lock.json",
+		"clean:hard": "rd /s /q build & rd /s /q jetpack_vendor & rd /s /q node_modules & rd /s /q vendor & del /f /q composer.lock & del /f /q package-lock.json",
 		"install:extra": "composer install && composer dump-autoload && husky install",
 		"start": "wp-scripts start",
 		"docker": "wp-env",
 		"test": "jest",
-		"build": "rd /s /q build & wp-scripts build",
-		"build:zip": "npm run build && rd /s /q $npm_package_name.zip && Compress-Archive -Path $npm_package_name.zip -DestinationPath src"
+		"build": "rd /s /q build & wp-scripts build && node ./bin/build.js",
+		"build:zip": "npm run build && node ./bin/buildZip.js",
+		"commit": "bash ./bin/gitCommit.sh"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",
@@ -25,6 +28,7 @@
 		"depcheck": "^1.4.3",
 		"eslint": "^8.30.0",
 		"husky": "^8.0.2",
+		"jszip": "^3.10.1",
 		"lint-staged": "^13.1.0",
 		"mini-css-extract-plugin": "^2.6.1",
 		"node-sass-glob-importer": "^5.3.2",
