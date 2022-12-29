@@ -20,6 +20,11 @@ class App {
 	}
 
 	public function admin_scripts() {
+
+		if ( ! isset( $_GET['page'] ) || $_GET['page'] !== self::get_menu_slug() ) {
+			return;
+		}
+
 		$backend = include_once QLXXX_PLUGIN_DIR . 'build/backend/js/index.asset.php';
 		wp_enqueue_script( 'plugin-init-backend', plugins_url( 'build/backend/js/index.js', QLXXX_PLUGIN_FILE ), $backend['dependencies'], $backend['version'] );
 		wp_enqueue_style( 'plugin-init-backend', plugins_url( 'build/backend/css/style.css', QLXXX_PLUGIN_FILE ), array(), QLXXX_PLUGIN_VERSION );
