@@ -62,9 +62,7 @@ const compressFolder = async (srcDir, destFile) => {
 			)
 			.on('finish', () =>
 				console.log(
-					'Zip written successfully:',
-					Date.now() - start,
-					'ms'
+					' '
 				)
 			);
 	} catch (ex) {
@@ -73,7 +71,8 @@ const compressFolder = async (srcDir, destFile) => {
 };
 
 //Delete old plugn zip
-fs.unlink('./' + pluginName + '.zip', function (err) {
-	console.log(err);
+fs.rm('./' + pluginName + '.zip', function (err) {
+	err ? console.log('\x1b[33m%s\x1b[0m', `./${pluginName}.zip not deleted`) : console.log('\x1b[32m%s\x1b[0m',`./${pluginName}.zip deleted`);
 	compressFolder('./' + pluginName, './' + pluginName + '.zip');
+	console.log('\x1b[32m%s\x1b[0m',`${pluginName}.zip successfully created`)
 });

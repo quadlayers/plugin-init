@@ -73,10 +73,11 @@ fs.readFile('./.eslintignore', function (err, data) {
 });
 
 //Delete the old plugin folder
-fs.rm('./' + pluginName, { recursive: true, force: true }, (err) => {
-	console.log(err);
+fs.rm('./' + pluginName, {recursive: true}, (err) => {
+	err ? console.log('\x1b[33m%s\x1b[0m', `./${pluginName} folder not deleted`) : console.log('\x1b[32m%s\x1b[0m',`./${pluginName} folder deleted`);
 	//Create folder pluginName
 	fs.mkdir(pluginName, function () {
+		console.log('\x1b[32m%s\x1b[0m',`./${pluginName} folder successfully created`)
 		copyFolderRecursiveSync('./build', './' + pluginName);
 		copyFolderRecursiveSync('./src', './' + pluginName);
 	});
