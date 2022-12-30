@@ -15,6 +15,9 @@ phpcs_error.csv
 # IDE files
 .vscode/
 
+#Tests
+/artifacts/
+
 # .zip del plungin generado
 *.zip
 /plugin-init/
