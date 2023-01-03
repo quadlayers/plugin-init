@@ -12,12 +12,14 @@
 		"start": "composer dump-autoload && wp-scripts start",
 		"docker": "wp-env",
 		"test": "jest",
+		"test:pw": "playwright test",
 		"build": "node ./bin/rm.js ./build && composer dump-autoload -o &&  wp-scripts build && node ./bin/build.js",
 		"build:zip": "npm run build && node ./bin/buildZip.js"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",
 	"devDependencies": {
+		"@playwright/test": "^1.29.1",
 		"@wordpress/env": "^5.8.0",
 		"@wordpress/prettier-config": "^2.6.0",
 		"@wordpress/scripts": "^23.6.0",

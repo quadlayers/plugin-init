@@ -12,9 +12,12 @@ composer.lock
 # PHPcs
 phpcs_error.csv
 
-# IDE files
-.vscode/
+#Tests
+/artifacts/
 
 # .zip del plungin generado
 *.zip
 /plugin-init/
+/test-results/
+/playwright-report/
+/playwright/.cache/
