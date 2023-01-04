@@ -5,14 +5,15 @@
 	"main": "index.js",
 	"scripts": {
 		"setup:hard": "npm run clean:hard && node ./bin/buildCleanHard.js && npm install --force && npm run install:extra",
-		"setup": "npm run clean:files && npm install --force && npm run install:extra",
+		"setup": "npm run clean:files && npm install --force && npm run install:extra & npx playwright install",
 		"clean:files": "node ./bin/del.js ./composer.lock ./package-lock.json",
 		"clean:hard": "node ./bin/rm.js ./build ./jetpack_vendor ./node_modules ./vendor && node ./bin/del.js ./composer.lock ./package-lock.json",
 		"install:extra": "composer install && husky install",
 		"start": "composer dump-autoload && wp-scripts start",
 		"docker": "wp-env",
-		"test": "jest",
-		"test:pw": "playwright test",
+		"test": "npm run test:unit & npm run test:e2e",
+		"test:unit": "jest",
+		"test:e2e": "playwright test",
 		"build": "node ./bin/rm.js ./build && composer dump-autoload -o &&  wp-scripts build && node ./bin/build.js",
 		"build:zip": "npm run build && node ./bin/buildZip.js"
 	},

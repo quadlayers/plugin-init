@@ -60,19 +60,43 @@ const compressFolder = async (srcDir, destFile) => {
 			.on('error', (err) =>
 				console.error('Error writing file', err.stack)
 			)
-			.on('finish', () =>
-				console.log(
-					' '
-				)
+			.on('finish', () =>{
+					//Delete pluginName folder
+					deleteFolderRecursive('./' + pluginName);
+					console.log('\x1b[32m%s\x1b[0m',`./${pluginName} folder deleted`);
+				}
 			);
 	} catch (ex) {
 		console.error('Error creating zip', ex);
 	}
 };
 
+const deleteFolderRecursive = function (directoryPath) {
+    if (fs.existsSync(directoryPath)) {
+		fs.readdirSync(directoryPath).forEach((file, index) => {
+			const curPath = path.join(directoryPath, file);
+			if (fs.lstatSync(curPath).isDirectory()) {
+				// recurse
+				deleteFolderRecursive(curPath);
+			} else {
+				// delete file
+				fs.unlinkSync(curPath);
+			}
+		});
+		fs.rmdirSync(directoryPath);
+	}
+};
+
 //Delete old plugn zip
 fs.rm('./' + pluginName + '.zip', function (err) {
+	//Show status
 	err ? console.log('\x1b[33m%s\x1b[0m', `./${pluginName}.zip not deleted`) : console.log('\x1b[32m%s\x1b[0m',`./${pluginName}.zip deleted`);
-	compressFolder('./' + pluginName, './' + pluginName + '.zip');
-	console.log('\x1b[32m%s\x1b[0m',`${pluginName}.zip successfully created`)
+	//Create zip
+	compressFolder('./' + pluginName, './' + pluginName + '.zip').then(function() {
+		//Show status
+		console.log('\x1b[32m%s\x1b[0m',`${pluginName}.zip successfully created`)
+		
+	}, function() {
+		console.log('\x1B[31m',`${pluginName}.zip not created`)
+	});
 });
