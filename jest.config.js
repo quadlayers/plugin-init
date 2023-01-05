@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-	testMatch: ['**/src/**/*.test.js'],
+	testMatch: ['**/lib/**/*.test.js'],
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,
 

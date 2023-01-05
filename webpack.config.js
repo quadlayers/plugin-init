@@ -10,11 +10,7 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(
-				__dirname,
-				'src/resources/views',
-				'./frontend/index.js'
-			),
+			index: path.resolve(__dirname, 'packages', './frontend/index.js'),
 		},
 		output: {
 			filename: '[name].js',
@@ -30,11 +26,7 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(
-				__dirname,
-				'src/resources/views',
-				'./frontend/style.scss'
-			),
+			index: path.resolve(__dirname, 'packages', './frontend/style.scss'),
 		},
 		output: {
 			filename: '[name].js',
@@ -73,11 +65,7 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(
-				__dirname,
-				'src/resources/views',
-				'./backend/index.js'
-			),
+			index: path.resolve(__dirname, 'packages', './backend/index.js'),
 		},
 		output: {
 			filename: '[name].js',
@@ -92,11 +80,7 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(
-				__dirname,
-				'src/resources/views',
-				'./backend/style.scss'
-			),
+			index: path.resolve(__dirname, 'packages', './backend/style.scss'),
 		},
 		output: {
 			filename: '[name].js',
