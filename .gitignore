@@ -1,23 +1,19 @@
-# Built packages
-/build/
-
-# Project files
-.developer
-/node_modules
+# Lock
 package-lock.json
+composer.lock
+# Dependencies
+/node_modules
 /vendor/
 /jetpack_vendor/
-composer.lock
-
-# PHPcs
+# Build
+/build/
+# PhpCs
 phpcs_error.csv
-
-#Tests
+#Test
 /artifacts/
-
-# .zip del plungin generado
-*.zip
-/plugin-init/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+#Zip
+*.zip
+/plugin-init/

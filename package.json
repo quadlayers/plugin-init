@@ -11,10 +11,10 @@
 		"clean": "npm run clean:build & npm run clean:lock & npm run clean:dependencies & npm run clean:zip",
 		"setup": "npm run clean & npm install --force && composer install && husky install && playwright install",
 		"update": "npm update && composer update",
+		"docker": "wp-env",
 		"test:unit": "jest",
 		"test:e2e": "npm run docker start && playwright test",
 		"test": "npm run test:unit & npm run test:e2e",
-		"docker": "wp-env",
 		"start": "npm run clean:build && composer dump-autoload && wp-scripts start",
 		"build": "npm run clean:build && composer dump-autoload -o &&  wp-scripts build",
 		"build:zip": "npm run clean:zip && npm run build && node ./bin/build.js && node ./bin/buildZip.js"
