@@ -17,7 +17,7 @@
 		"test": "npm run test:unit & npm run test:e2e",
 		"docker": "wp-env",
 		"start": "npm run clean:build && composer dump-autoload && wp-scripts start",
-		"phpcs:report": "phpcs --extensions=php  --standard=WordPress --error-severity=5 --report=csv --report-file=./phpcs_error.csv ./src",	
+		"phpcs:report": "phpcs --extensions=php  --standard=WordPress --error-severity=5 --report=csv --report-file=./phpcs_error.csv ./src",
 		"build": "npm run clean:build && composer dump-autoload -o &&  wp-scripts build",
 		"build:zip": "npm run clean:zip && npm run build && node ./bin/build.js && node ./bin/buildZip.js"
 	},
