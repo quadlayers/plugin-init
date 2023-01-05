@@ -3,8 +3,6 @@ const fsp = require('fs/promises');
 const path = require('path');
 const JSZip = require('jszip');
 
-const pluginName = process.env.npm_package_name;
-
 /**
  * Returns a flat list of all files and subfolders for a directory (recursively).
  * @param {string} dir
@@ -71,6 +69,10 @@ const compressFolder = async (srcDir, destFile) => {
 	}
 };
 
+/**
+ * Delete a folder (recursively).
+ * @param {string} dir
+ */
 const deleteFolderRecursive = function (directoryPath) {
     if (fs.existsSync(directoryPath)) {
 		fs.readdirSync(directoryPath).forEach((file, index) => {
@@ -87,16 +89,26 @@ const deleteFolderRecursive = function (directoryPath) {
 	}
 };
 
-//Delete old plugn zip
+/**
+ * Execute:
+ *	Get plugin name
+ *	Delete old pluginName zip
+ *	Create new pluginName zip
+ */
+
+// Get plugin name
+const pluginName = process.env.npm_package_name;
+
+// Delete old pluginName zip
 fs.rm('./' + pluginName + '.zip', function (err) {
 	//Show status
-	err ? console.log('\x1b[33m%s\x1b[0m', `./${pluginName}.zip not deleted`) : console.log('\x1b[32m%s\x1b[0m',`./${pluginName}.zip deleted`);
+	err ?? console.log('\x1b[32m%s\x1b[0m',`./${pluginName}.zip deleted`);
 	//Create zip
 	compressFolder('./' + pluginName, './' + pluginName + '.zip').then(function() {
 		//Show status
 		console.log('\x1b[32m%s\x1b[0m',`${pluginName}.zip successfully created`)
-		
 	}, function() {
+		//Show status
 		console.log('\x1B[31m',`${pluginName}.zip not created`)
 	});
 });

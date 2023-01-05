@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const pluginName = process.env.npm_package_name;
-
+/**
+ * Copy files source to target.
+ * @param {string} source
+ * @param {string} target
+ */
 function copyFileSync(source, target) {
 	var targetFile = target;
 
@@ -16,6 +19,11 @@ function copyFileSync(source, target) {
 	fs.writeFileSync(targetFile, fs.readFileSync(source));
 }
 
+/**
+ * Copy folder recursive source to target.
+ * @param {string} source
+ * @param {string} target
+ */
 function copyFolderRecursiveSync(source, target) {
 	var files = [];
 
@@ -39,13 +47,20 @@ function copyFolderRecursiveSync(source, target) {
 	}
 }
 
+/**
+ * Execute:
+ *	Add pluginName folder to ignore files
+ *	Get plugin name
+ *	Delete old pluginName folder
+ *	Create new pluginName folder
+ *	Put files and folders in pluginName folder
+ */
+
 //Add folder to gitignore
 fs.readFile('./.gitignore', function (err, data) {
 	if (err) throw err;
-	if (data.indexOf('/' + pluginName + '/') >= 0) {
-		// Ya está la carpeta del plugin en el .gitignore
-	} else {
-		// No encontro el plugin en el .gitignore
+	if (!(data.indexOf('/' + pluginName + '/') >= 0)) {
+		// Add to .gitignore
 		fs.appendFileSync('./.gitignore', '/' + pluginName + '/');
 	}
 });
@@ -53,10 +68,8 @@ fs.readFile('./.gitignore', function (err, data) {
 //Add folder to prettierignore
 fs.readFile('./.prettierignore', function (err, data) {
 	if (err) throw err;
-	if (data.indexOf(pluginName) >= 0) {
-		// Ya está la carpeta del plugin en el .gitignore
-	} else {
-		// No encontro el plugin en el .gitignore
+	if (!(data.indexOf(pluginName) >= 0)) {
+		// Add to .prettierignore
 		fs.appendFileSync('./.prettierignore', pluginName);
 	}
 });
@@ -64,18 +77,19 @@ fs.readFile('./.prettierignore', function (err, data) {
 //Add folder to eslintignore
 fs.readFile('./.eslintignore', function (err, data) {
 	if (err) throw err;
-	if (data.indexOf(pluginName) >= 0) {
-		// Ya está la carpeta del plugin en el .gitignore
-	} else {
-		// No encontro el plugin en el .gitignore
+	if (!(data.indexOf(pluginName) >= 0)) {
+		// Add to .eslintignore
 		fs.appendFileSync('./.eslintignore', pluginName);
 	}
 });
 
+// Get plugin name
+const pluginName = process.env.npm_package_name;
+
 //Delete the old plugin folder
 fs.rm('./' + pluginName, {recursive: true}, (err) => {
 	//Show status
-	err ? console.log('\x1b[33m%s\x1b[0m', `./${pluginName} folder not deleted`) : console.log('\x1b[32m%s\x1b[0m',`./${pluginName} folder deleted`);
+	err ?? console.log('\x1b[32m%s\x1b[0m',`./${pluginName} folder deleted`);
 	//Create pluginName folder
 	fs.mkdir(pluginName, function () {
 		//Show status
