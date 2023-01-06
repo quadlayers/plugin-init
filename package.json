@@ -13,14 +13,16 @@
 		"clean": "npm run delete:build & npm run delete:lock & npm run delete:dependencies & npm run delete:zip & npm run delete:phpcs_error & npm run delete:playwright",
 		"setup": "npm run clean & npm install --force && composer install && husky install && playwright install",
 		"update": "npm update && composer update",
-		"test:unit": "jest",
+		"test:unit:php": "composer run-script test:phpunit",
+		"test:unit:js": "jest",
+		"test:unit": "npm run test:unit:js & npm run test:unit:php",
 		"test:e2e": "npm run docker start && playwright test",
 		"test": "npm run test:unit & npm run test:e2e",
 		"docker": "wp-env",
 		"start": "npm run delete:build && composer dump-autoload && wp-scripts start",
 		"phpcs:report": "phpcs --extensions=php  --standard=WordPress --error-severity=5 --report=csv --report-file=./phpcs_error.csv ./lib",
 		"build": "npm run delete:build && composer dump-autoload -o &&  wp-scripts build",
-		"build:zip": "npm run delete:zip && npm run build && node ./bin/build.js && node ./bin/buildZip.js"
+		"build:zip": "npm run delete:zip && composer install --no-dev && npm run build && node ./bin/build.js && node ./bin/buildZip.js && composer install"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",

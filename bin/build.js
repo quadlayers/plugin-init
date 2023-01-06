@@ -96,8 +96,14 @@ fs.rm('./' + pluginName, {recursive: true}, (err) => {
 		console.log('\x1b[32m%s\x1b[0m',`./${pluginName} folder successfully created`)
 		//Put build folder in pluginName folder
 		copyFolderRecursiveSync('./build', './' + pluginName);
-		//Put src folder in pluginName folder
+		//Put lib folder in pluginName folder
 		copyFolderRecursiveSync('./lib', './' + pluginName);
+		//Put composer folder in pluginName folder
+		copyFolderRecursiveSync('./composer', './' + pluginName);
+		//Put vendor folder in pluginName folder
+		copyFolderRecursiveSync('./vendor', './' + pluginName);
+		//Put jetpack_vendor folder in pluginName folder
+		copyFolderRecursiveSync('./jetpack_vendor', './' + pluginName);
 		//Put pluginName.php script into a pluginName folder
 		copyFileSync(pluginName+'.php','./'+pluginName);
 	});
