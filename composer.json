@@ -11,7 +11,8 @@
 	"minimum-stability": "stable",
 	"config": {
 		"allow-plugins": {
-			"automattic/jetpack-composer-plugin": true
+			"automattic/jetpack-composer-plugin": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"autoload": {
@@ -30,7 +31,9 @@
 		"wp-plugin-slug": "plugin-init"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "9"
+		"phpunit/phpunit": "9",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"wp-coding-standards/wpcs": "^2.3"
 	},
 	"scripts": {
 		"test:phpunit": "./vendor/bin/phpunit phpunit"
