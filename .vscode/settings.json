@@ -6,5 +6,12 @@
 		"**/node_modules": true,
 		"**/bower_components": true,
 		"**/tmp": true
-	}
+	},
+	"phpcs.executablePath": "./vendor/bin/phpcs.bat",
+	"phpcs.standard": "WordPress",
+	"phpcbf.enable": true,
+	"phpcbf.executablePath": "./vendor/bin/phpcbf.bat",
+	"phpcbf.documentFormattingProvider": true,
+	"phpcbf.onsave": true,
+	"phpcbf.standard": "WordPress"
 }
