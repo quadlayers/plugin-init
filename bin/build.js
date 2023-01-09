@@ -106,5 +106,10 @@ fs.rm('./' + pluginName, {recursive: true}, (err) => {
 		copyFolderRecursiveSync('./jetpack_vendor', './' + pluginName);
 		//Put pluginName.php script into a pluginName folder
 		copyFileSync(pluginName+'.php','./'+pluginName);
+
+		//Remove vendor/bin folder
+		fs.rm('./'+pluginName+'/vendor/bin',{recursive: true}, (err) => {
+			err ?? true;
+		});
 	});
 });
