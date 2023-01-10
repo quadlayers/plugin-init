@@ -15,6 +15,7 @@
 
 	<!-- Include the WordPress-Extra standard. -->
 	<rule ref="WordPress-Extra">
+		<exclude name="WordPress.WP.GlobalVariablesOverride" />
 	</rule>
 
 	<!-- Add in some extra rules from other standards. -->
