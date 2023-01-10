@@ -8,6 +8,7 @@ jetpack_vendor
 # Build
 build
 # PhpCs
+phpcs_error.txt
 phpcs_error.csv
 #Test
 artifacts
