@@ -106,6 +106,34 @@ fs.rm('./' + pluginName, {recursive: true}, (err) => {
 		copyFolderRecursiveSync('./jetpack_vendor', './' + pluginName);
 		//Put pluginName.php script into a pluginName folder
 		copyFileSync(pluginName+'.php','./'+pluginName);
+		//Add templates folder if exists
+		fs.access("./templates", function(error) {
+			if (!error) {
+				//Put templates folder in pluginName folder
+				copyFolderRecursiveSync('./templates', './' + pluginName);
+			}
+		});
+		//Add languages folder if exists
+		fs.access("./languages", function(error) {
+			if (!error) {
+				//Put languages folder in pluginName folder
+				copyFolderRecursiveSync('./languages', './' + pluginName);
+			}
+		});
+		//Add assets folder if exists
+		fs.access("./assets", function(error) {
+			if (!error) {
+				//Put assets folder in pluginName folder
+				copyFolderRecursiveSync('./assets', './' + pluginName);
+			}
+		});
+		//Add uninstall.php file if exists
+		fs.access("./uninstall.php", function(error) {
+			if (!error) {
+				//Put pluginName.php script into a pluginName folder
+				copyFileSync('uninstall.php','./'+pluginName);
+			}
+		});
 
 		//Remove vendor/bin folder
 		fs.rm('./'+pluginName+'/vendor/bin',{recursive: true}, (err) => {
