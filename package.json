@@ -12,7 +12,7 @@
 		"delete:dependencies:php": "node ./bin/delete.js ./vendor ./jetpack_vendor",
 		"delete:dependencies": "npm run delete:dependencies:js && npm run delete:dependencies:php",
 		"delete:plugin": "node ./bin/deletePlugin.js",
-		"delete:plugin:zip": "node ./bin/deleteZip.js",
+		"delete:plugin:zip": "node ./bin/deletePluginZip.js",
 		"delete:phpcs_error": "node ./bin/delete.js ./phpcs_error.csv",
 		"delete:playwright": "node ./bin/delete.js ./playwright-report ./playwright",
 		"clean:js": "npm run delete:build & npm run delete:lock:js & npm run delete:dependencies:js & npm run delete:playwright",
