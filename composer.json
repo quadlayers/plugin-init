@@ -15,10 +15,8 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
-	"autoload": {
-		"psr-4": {
-			"QuadLayers\\PluginInit\\": "lib/"
-		}
+	"autoload": {        
+		"classmap": ["lib/"]
 	},
 	"require": {
 		"automattic/jetpack-composer-plugin": "*",
