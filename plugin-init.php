@@ -48,12 +48,12 @@ define( 'QLXXX_PREMIUM_SELL_URL', 'https://quadlayers.com/plugin-init-pro' );
  */
 require_once __DIR__ . '/vendor/autoload.php';
 /**
- * Load composer packages
+ * Load vendor_packages packages
  */
-require_once __DIR__ . '/composer/wp-i18n-map.php';
-require_once __DIR__ . '/composer/wp-dashboard-widget-news.php';
-require_once __DIR__ . '/composer/wp-plugin-table-links.php';
-require_once __DIR__ . '/composer/wp-notice-plugin-required.php';
+require_once __DIR__ . '/vendor_packages/wp-i18n-map.php';
+require_once __DIR__ . '/vendor_packages/wp-dashboard-widget-news.php';
+require_once __DIR__ . '/vendor_packages/wp-plugin-table-links.php';
+require_once __DIR__ . '/vendor_packages/wp-notice-plugin-required.php';
 /**
  * Load plugin classes
  */
