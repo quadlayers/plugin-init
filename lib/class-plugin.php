@@ -2,7 +2,7 @@
 
 namespace QuadLayers\PluginInit;
 
-class App {
+class Plugin {
 
 	protected static $instance;
 	protected static $menu_slug = 'plugin-init';
@@ -83,7 +83,7 @@ class App {
  * TODO: ver si es necesario
  */
 function PluginInit() {     // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
-	return App::instance();
+	return Plugin::instance();
 }
 
 PluginInit();
