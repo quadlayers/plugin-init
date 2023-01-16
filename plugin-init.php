@@ -57,7 +57,7 @@ require_once __DIR__ . '/composer/wp-notice-plugin-required.php';
 /**
  * Load plugin classes
  */
-require_once 'lib/App.php';
+require_once __DIR__ . 'lib/Plugin.php';
 
 register_activation_hook(
 	QLXXX_PLUGIN_FILE,
