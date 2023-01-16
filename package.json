@@ -39,7 +39,9 @@
 		"build:php": "composer install --no-dev && composer dump-autoload -o",
 		"build": "npm run build:js && npm run build:php",
 		"build:plugin": "npm run delete:plugin && npm run build && node ./bin/build.js && composer install",
-		"build:plugin:zip": "npm run delete:plugin:zip && npm run build && node ./bin/build.js && node ./bin/buildZip.js && composer install"
+		"build:plugin:zip": "npm run delete:plugin:zip && npm run build && node ./bin/build.js && node ./bin/buildZip.js && composer install",
+		"build:plugin:wc": "npm run delete:plugin && npm run build && node ./bin/build.js wc && composer install",
+		"build:plugin:zip:wc": "npm run delete:plugin:zip && npm run build && node ./bin/build.js wc && node ./bin/buildZip.js && composer install"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",

@@ -139,5 +139,31 @@ fs.rm('./' + pluginName, {recursive: true}, (err) => {
 		fs.rm('./'+pluginName+'/vendor/bin',{recursive: true}, (err) => {
 			err ?? true;
 		});
+
+		/*
+		 * If have a wc parameter need to exclude wp-license-client and wp-notice-plugin-required on:
+		 * - File: vendor_packages/wp-license-client
+		 * - File: vendor_packages/wp-notice-plugin-required
+		 * - Row in pluginName.php
+		*/
+		const myArgs = process.argv.slice(2);
+		if('wc' == myArgs[0]){
+			//Remove vendor_packages/wp-license-client file
+			fs.rm('./'+pluginName+'/vendor_packages/wp-license-client.php',{recursive: true}, (err) => {
+				err ?? true;
+			});
+			//Remove vendor_packages/wp-notice-plugin-required file
+			fs.rm('./'+pluginName+'/vendor_packages/wp-notice-plugin-required.php',{recursive: true}, (err) => {
+				err ?? true;
+			});
+			//Read pluginName file
+			var filepath = './'+pluginName+'/'+pluginName+'.php';
+			var content = fs.readFileSync(filepath, 'utf-8');
+			// replace lines to white space
+			var newContent = content.replace("require_once __DIR__ . '/vendor_packages/wp-notice-plugin-required.php';", '');
+			var finalContent = newContent.replace("require_once __DIR__ . '/vendor_packages/wp-license-client.php';", '');
+			fs.writeFileSync(filepath, finalContent, 'utf-8');
+		}
+
 	});
 });
