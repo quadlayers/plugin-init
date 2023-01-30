@@ -12,13 +12,25 @@
 	"config": {
 		"allow-plugins": {
 			"automattic/jetpack-composer-plugin": true,
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"quadlayers/wp-autoload": true
 		}
 	},
 	"autoload": {
 		"classmap": [
 			"lib/"
 		]
+	},
+	"autoload-dev": {
+		"exclude-from-classmap": [
+			"lib/"
+		]
+	},
+	"extra": {
+		"quadlayers/wp-autoload": {
+			"QuadLayers\\PluginInit\\": "lib/"
+		},
+		"wp-plugin-slug": "plugin-init"
 	},
 	"require": {
 		"automattic/jetpack-composer-plugin": "*",
@@ -27,12 +39,10 @@
 		"quadlayers/wp-notice-plugin-required": "^2.0.0",
 		"quadlayers/wp-plugin-table-links": "^1.0.0"
 	},
-	"extra": {
-		"wp-plugin-slug": "plugin-init"
-	},
 	"require-dev": {
 		"woocommerce/woocommerce-sniffs": "^0.1.3",
-		"phpunit/phpunit": "^9.5"
+		"phpunit/phpunit": "^9.5",
+		"quadlayers/wp-autoload": "^1.0"
 	},
 	"scripts": {
 		"test:phpunit": "./vendor/bin/phpunit phpunit"
