@@ -1,6 +1,6 @@
 {
 	"core": "WordPress/WordPress",
-	"plugins": ["."],
+	"plugins": ["./plugin-init/"],
 	"config": {
 		"WP_DEBUG_DISPLAY": true
 	}
