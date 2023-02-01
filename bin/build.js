@@ -25,6 +25,11 @@ function copyFileSync(source, target) {
  * @param {string} target
  */
 function copyFolderRecursiveSync(source, target) {
+
+	if (!fs.existsSync(source)) {
+		return;
+	}
+	
 	var files = [];
 
 	// Check if folder needs to be created or integrated
