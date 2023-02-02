@@ -11,6 +11,9 @@
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       plugin-init
  * Domain Path:       /languages
+ * Requires at least: 4.7
+ * Tested up to: 6.1.1
+ * Requires PHP: 7.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
