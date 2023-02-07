@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Plugin Name:       Plugin Init
- * Plugin URI:        https://quadlayers.com/plugin-init
- * Description:       Plugin Init description
- * Version:           1.0.0
- * Author:            QuadLayers
- * Author URI:        https://quadlayers.com
- * License:           GPLv3
- * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       plugin-init
- * Domain Path:       /languages
- * Requires at least: 4.7
- * Tested up to: 6.1.1
- * Requires PHP: 7.1
+ * Plugin Name:             Plugin Init
+ * Plugin URI:              https://quadlayers.com/portfolio/plugin-init
+ * Description:             Plugin Init description
+ * Version:                 1.0.0
+ * Text Domain:             plugin-init
+ * Author:                  QuadLayers
+ * Author URI:              https://quadlayers.com
+ * License:                 GPLv3
+ * Domain Path:             /languages
+ * Request at least:        4.7.0
+ * Tested up to:            6.1
+ * Requires PHP:            5.6
+ * WC requires at least:    4.0
+ * WC tested up to:         7.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

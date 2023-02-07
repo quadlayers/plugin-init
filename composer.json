@@ -11,7 +11,7 @@
 	"minimum-stability": "stable",
 	"config": {
 		"platform": {
-			"php" : "^7.1"
+			"php": "7.3.0"
 		},
 		"allow-plugins": {
 			"automattic/jetpack-composer-plugin": true,
@@ -36,6 +36,7 @@
 		"wp-plugin-slug": "plugin-init"
 	},
 	"require": {
+		"php": ">=7.1.0",
 		"automattic/jetpack-composer-plugin": "*",
 		"automattic/jetpack-assets": "*",
 		"quadlayers/wp-dashboard-widget-news": "^1.0.0",
