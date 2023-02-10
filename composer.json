@@ -41,7 +41,7 @@
 	},
 	"extra": {
 		"quadlayers/wp-autoload": {
-			"QuadLayers\\PWB": "lib/"
+			"QuadLayers\\PluginInit": "lib/"
 		},
 		"wp-plugin-slug": "plugin-init"
 	},
