@@ -4,4 +4,4 @@ vendor
 build
 test
 bin
-plugin-init
+.plugin
