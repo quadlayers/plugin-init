@@ -21,6 +21,9 @@ const PLUGIN_FILES = [
 		source: "uninstall.php",
 	},
 	{
+		source: "wpml-config.xml",
+	},
+	{
 		source: "./lib",
 		required: true,
 	},
