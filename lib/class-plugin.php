@@ -48,7 +48,7 @@ class Plugin {
 			QLXXX_PLUGIN_NAME,
 			'edit_posts',
 			$menu_slug,
-			'__return_null',
+			'__return_null'
 			// plugins_url( '/assets/backend/img/tiktok-white.svg', QLXXX_PLUGIN_FILE )
 		);
 		add_submenu_page(
