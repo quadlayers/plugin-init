@@ -37,10 +37,10 @@
 		"build:js": "npm run delete:build &&  wp-scripts build",
 		"build:php": "composer install --no-dev && composer dump-autoload -o --no-dev",
 		"build": "npm run build:js && npm run build:php",
-		"build:plugin": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js && npm run start:php",
-		"build:plugin:zip": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js --zip && npm run start:php",
-		"build:plugin:wc": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js --wc && npm run start:php",
-		"build:plugin:wc:zip": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js --wc --zip && npm run start:php"
+		"build:plugin": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js",
+		"build:plugin:zip": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js --zip",
+		"build:plugin:wc": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js --wc",
+		"build:plugin:wc:zip": "npm run delete:plugin && npm run build && node ./bin/buildPlugin.js --wc --zip"
 	},
 	"author": "QuadLayers",
 	"license": "ISC",
