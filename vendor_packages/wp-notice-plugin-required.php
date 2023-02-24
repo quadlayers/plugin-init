@@ -10,10 +10,6 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Required\\Load' ) ) {
 				'slug' => 'woocommerce',
 				'name' => 'WooCommerce',
 			),
-			array(
-				'slug' => 'emailoctopus',
-				'name' => 'Email Marketing by EmailOctopus',
-			),
 		)
 	);
 }

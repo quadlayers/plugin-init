@@ -42,9 +42,6 @@ define( 'QLXXX_DOCUMENTATION_API_URL', 'https://quadlayers.com/documentation/plu
 define( 'QLXXX_DOCUMENTATION_ACCOUNT_URL', 'https://quadlayers.com/documentation/plugin-init/account/?utm_source=plugin-init_admin' );
 define( 'QLXXX_GROUP_URL', 'https://www.facebook.com/groups/quadlayers' );
 define( 'QLXXX_DEVELOPER', false );
-
-define( 'QLXXX_PREMIUM_SELL_SLUG', 'plugin-init-pro' );
-define( 'QLXXX_PREMIUM_SELL_NAME', 'Plugin Name Pro' );
 define( 'QLXXX_PREMIUM_SELL_URL', 'https://quadlayers.com/plugin-init-pro' );
 
 /**
@@ -58,6 +55,7 @@ require_once __DIR__ . '/vendor_packages/wp-i18n-map.php';
 require_once __DIR__ . '/vendor_packages/wp-dashboard-widget-news.php';
 require_once __DIR__ . '/vendor_packages/wp-plugin-table-links.php';
 require_once __DIR__ . '/vendor_packages/wp-notice-plugin-required.php';
+require_once __DIR__ . '/vendor_packages/wp-notice-plugin-promote.php';
 /**
  * Load plugin classes
  */
