@@ -2,12 +2,16 @@
 
 namespace QuadLayers\PluginInit;
 
-class Plugin {
+final class Plugin {
 
 	protected static $instance;
 	protected static $menu_slug = 'plugin-init';
 
-	private function __construct() {
+	private function __construct() {		
+		/**
+		 * Load plugin textdomain.
+		 */
+		load_plugin_textdomain( 'plugin-init', false, QLXXX_PLUGIN_DIR . '/languages/' );
 		/**
 		 * Admin
 		 */
@@ -71,7 +75,7 @@ class Plugin {
 	}
 
 	public static function instance() {
-		if ( ! isset( self::$instance ) ) {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
