@@ -6,7 +6,7 @@ if ( class_exists( 'QuadLayers\\WP_Plugin_Table_Links\\Load' ) ) {
 		array(
 			array(
 				'text'   => esc_html__( 'Settings', 'plugin-init' ),
-				'url'    => admin_url( 'admin.php?page=wc-settings&tab=plugin-init' ),
+				'url'    => admin_url( 'admin.php?page=wc-settings&tab=qlxxx' ),
 				'target' => '_self',
 			),
 			array(
