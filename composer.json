@@ -27,7 +27,9 @@
 		"quadlayers/wp-notice-plugin-required": "*",
 		"quadlayers/wp-notice-plugin-promote": "*",
 		"quadlayers/wp-plugin-table-links": "*",
-		"quadlayers/wp-plugin-suggestions": "*"
+		"quadlayers/wp-plugin-suggestions": "*",
+		"wp-cli/wp-cli": "*",
+		"wp-cli/i18n-command": "*"
 	},
 	"autoload": {
 		"classmap": [
