@@ -1,4 +1,11 @@
 {
+	"[javascript]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"eslint.validate": ["javascript"],
 	"editor.tabCompletion": "on",
 	"diffEditor.codeLens": true,
 	"search.exclude": {
