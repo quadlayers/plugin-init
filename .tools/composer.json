@@ -15,35 +15,36 @@
 		},
 		"allow-plugins": {
 			"quadlayers/wp-autoload": true,
-			"automattic/jetpack-composer-plugin": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"require": {
-		"php": ">=7.1.0",
-		"automattic/jetpack-composer-plugin": "*",
-		"automattic/jetpack-assets": "*",
-		"quadlayers/wp-dashboard-widget-news": "*",
-		"quadlayers/wp-notice-plugin-required": "*",
-		"quadlayers/wp-notice-plugin-promote": "*",
-		"quadlayers/wp-plugin-table-links": "*",
-		"quadlayers/wp-plugin-suggestions": "*"
+		"php": ">=7.1.0"
 	},
 	"autoload": {
 		"classmap": [
-			"lib/"
+			"../lib/"
 		]
 	},
 	"autoload-dev": {
 		"exclude-from-classmap": [
-			"lib/"
+			"../lib/"
 		]
 	},
 	"extra": {
-		"quadlayers/wp-autoload": {
-			"QuadLayers\\PluginInit": "lib/"
+        "quadlayers/wp-autoload": {
+			"QuadLayers\\PluginInit": "../lib/"
 		},
 		"wp-plugin-slug": "plugin-init"
 	},
-	"scripts": {}
+	"require-dev": {
+		"quadlayers/wp-autoload": "*",
+		"woocommerce/woocommerce-sniffs": "^0.1.3",
+		"phpunit/phpunit": "^9.5",
+		"wp-cli/wp-cli": "*",
+		"wp-cli/i18n-command": "*"
+	},
+	"scripts": {
+		"test:phpunit": "./vendor/bin/phpunit ../phpunit"
+	}
 }
