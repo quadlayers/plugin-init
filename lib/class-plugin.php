@@ -7,7 +7,7 @@ final class Plugin {
 	protected static $instance;
 	protected static $menu_slug = 'plugin-init';
 
-	private function __construct() {		
+	private function __construct() {
 		/**
 		 * Load plugin textdomain.
 		 */
@@ -38,7 +38,6 @@ final class Plugin {
 		$frontend = include_once QLXXX_PLUGIN_DIR . 'build/frontend/js/index.asset.php';
 		wp_enqueue_script( 'plugin-init-frontend', plugins_url( 'build/frontend/js/index.js', QLXXX_PLUGIN_FILE ), $frontend['dependencies'], $frontend['version'] );
 		wp_enqueue_style( 'plugin-init-frontend', plugins_url( 'build/frontend/css/style.css', QLXXX_PLUGIN_FILE ), array(), QLXXX_PLUGIN_VERSION );
-
 	}
 
 	public static function get_menu_slug() {
