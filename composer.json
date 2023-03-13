@@ -15,8 +15,7 @@
 		},
 		"allow-plugins": {
 			"quadlayers/wp-autoload": true,
-			"automattic/jetpack-composer-plugin": true,
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"automattic/jetpack-composer-plugin": true
 		}
 	},
 	"require": {
@@ -38,6 +37,9 @@
 		"exclude-from-classmap": [
 			"lib/"
 		]
+	},
+	"require-dev": {
+		"quadlayers/wp-autoload": "*"
 	},
 	"extra": {
 		"quadlayers/wp-autoload": {

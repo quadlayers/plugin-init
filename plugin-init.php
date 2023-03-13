@@ -60,10 +60,21 @@ require_once __DIR__ . '/vendor_packages/wp-notice-plugin-promote.php';
  * Load plugin classes
  */
 require_once __DIR__ . '/lib/class-plugin.php';
-
+/**
+ * On plugin activation
+ */
 register_activation_hook(
-	QLXXX_PLUGIN_FILE,
+	__FILE__,
 	function() {
-		do_action( QLXXX_PREFIX . '_activation' );
+		do_action( 'qlxxx_activation' );
+	}
+);
+/**
+ * On plugin deactivation
+ */
+register_deactivation_hook(
+	__FILE__,
+	function() {
+		do_action( 'qlxxx_deactivation' );
 	}
 );

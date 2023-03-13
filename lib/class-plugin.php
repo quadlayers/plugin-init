@@ -21,6 +21,10 @@ final class Plugin {
 		 * Frontend
 		 */
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+		/**
+		 * Load plugin classes
+		 */
+		Setup::instance();
 	}
 
 	public function admin_scripts() {
