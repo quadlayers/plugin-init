@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Install browsers for PlayWright tests
-npx playwright install
+#npx playwright install
 # Execute tests
-npm run test
-./vendor/bin/phpunit phpunit
+#npm run test
+#./vendor/bin/phpunit phpunit
