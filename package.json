@@ -45,7 +45,7 @@
 		"docker": "wp-env",
 		"start:js": "pnpm run delete:build && wp-scripts start",
 		"start:php": "pnpm run setup:php && composer dump-autoload",
-		"start": "pnpm run start:js && pnpm run start:php",
+		"start": "pnpm run start:php && pnpm run start:js",
 		"build:js": "pnpm run delete:build &&  wp-scripts build",
 		"build:php": "composer install --no-dev && composer dump-autoload -o --no-dev",
 		"build": "pnpm run build:js && pnpm run build:php",
