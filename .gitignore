@@ -11,11 +11,13 @@ build
 # PhpCs
 phpcs_error.txt
 phpcs_error.csv
+phpcs_error.xml
 #Test
 artifacts
 /test-results
 playwright-report
 playwright
-#Zip
-*.zip
+.tools
 .plugin
+.prettierrc
+README.md
