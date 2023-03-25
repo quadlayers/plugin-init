@@ -6,3 +6,5 @@
 # Execute tests
 #npm run test
 #./vendor/bin/phpunit phpunit
+
+echo "Error: $folder folder does not exist"
