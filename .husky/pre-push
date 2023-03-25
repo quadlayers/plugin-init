@@ -8,19 +8,29 @@
 #./vendor/bin/phpunit phpunit
 
 # Check if the push includes a tag
-IS_TAG=$(git rev-parse --symbolic --verify --quiet refs/tags/* 2> /dev/null)
-
-if [ -n "$IS_TAG" ]; then
-  # Check if the build folder exists
-  folder="build"
-  if [ ! -d "$folder" ]; then
-    echo "Error: $folder folder does not exist"
-    exit 1
+while read local_ref local_sha remote_ref remote_sha; do
+  if [[ $remote_ref == refs/tags/* ]]; then
+    # This is a tag push, perform necessary actions
+    folder="build"
+    if [ ! -d "$folder" ]; then
+      echo "Error: $folder folder does not exist"
+      exit 1
+    fi
+    folder="vendor"
+    if [ ! -d "$folder" ]; then
+      echo "Error: $folder folder does not exist"
+      exit 1
+    fi
+    folder="jetpack_vendor"
+    if [ ! -d "$folder" ]; then
+      echo "Error: $folder folder does not exist"
+      exit 1
+    fi
+    # Add the compiled code
+    git add build/
+    git add vendor/
+    git add jetpack_vendor/
+    # Amend the tag to include the latest commit
+    git tag -f --allow-empty -a "${remote_ref#refs/tags/}" -m "Release: ${remote_ref#refs/tags/}" ${remote_sha} 
   fi
-  # Add and commit the compiled code
-  git add build/
-  git commit -m "Include build folder in tag: $IS_TAG"
-
-  # Amend the tag to include the latest commit
-  git tag -f -a "$IS_TAG" -m "Release: $IS_TAG"
-fi
+done
