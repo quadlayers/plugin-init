@@ -9,16 +9,15 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["react"],
 	"rules": {
 		"react/prop-types": "off",
 		"jsdoc/check-tag-names": "off",
 		"jsx-a11y/label-has-associated-control": "off",
-		"prettier/prettier": [
-			"error",
-			{
-				"endOfLine": "auto"
-			}
-		]
+		"import/no-unresolved": ["error", { "ignore": ["^jquery$"] }]
+	},
+	"settings": {
+		"react": {
+			"version": "999.999.999"
+		}
 	}
 }

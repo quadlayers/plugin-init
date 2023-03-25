@@ -6,3 +6,21 @@
 # Execute tests
 #npm run test
 #./vendor/bin/phpunit phpunit
+
+# Check if the push includes a tag
+IS_TAG=$(git rev-parse --symbolic --verify --quiet refs/tags/* 2> /dev/null)
+
+if [ -n "$IS_TAG" ]; then
+  # Check if the build folder exists
+  folder="build"
+  if [ ! -d "$folder" ]; then
+    echo "Error: $folder folder does not exist"
+    exit 1
+  fi
+  # Add and commit the compiled code
+  git add build/
+  git commit -m "Include build folder in tag: $IS_TAG"
+
+  # Amend the tag to include the latest commit
+  git tag -f -a "$IS_TAG" -m "Release: $IS_TAG"
+fi
