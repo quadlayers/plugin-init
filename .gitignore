@@ -21,3 +21,4 @@ playwright
 .plugin
 .prettierrc
 README.md
+.DS_Store
