@@ -17,7 +17,8 @@ artifacts
 /test-results
 playwright-report
 playwright
-.tools
+.tools/vendor
+.tools/composer.lock
 .plugin
 .prettierrc
 README.md
