@@ -23,3 +23,4 @@ playwright
 .prettierrc
 README.md
 .DS_Store
+.vscode/settings.json
