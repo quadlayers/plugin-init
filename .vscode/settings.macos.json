@@ -1,4 +1,4 @@
 {
-	"phpsab.executablePathCS": "./vendor/bin/phpcs",
-	"phpsab.executablePathCBF": "./vendor/bin/phpcbf"
+	"phpsab.executablePathCS": ".tools/vendor/bin/phpcs",
+	"phpsab.executablePathCBF": ".tools/vendor/bin/phpcbf"
 }
