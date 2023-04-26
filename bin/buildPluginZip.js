@@ -26,7 +26,7 @@ const _pluginFolder = pluginFolder.substring(0, pluginFolder.lastIndexOf('/'));
 				.then(
 					function (err) {
 						fs.rename(_pluginFileZipTemp, _pluginFileZip, function (err) {
-							//Show status		
+							//Show status
 							err ?? consoleSuccess(`${_pluginFolder} compressed`)
 						})
 					},

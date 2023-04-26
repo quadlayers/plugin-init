@@ -1,20 +1,20 @@
-const path = require('path');
-const defaultConfig = require('./node_modules/@wordpress/scripts/config/webpack.config');
+const path = require( 'path' );
+const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config' );
 const isProduction = process.env.NODE_ENV === 'production';
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const globImporter = require('node-sass-glob-importer');
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const globImporter = require( 'node-sass-glob-importer' );
+const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 module.exports = [
 	//Frontend
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(__dirname, 'packages', './frontend/index.js'),
+			index: path.resolve( __dirname, 'packages', './frontend/index.js' ),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, 'build/frontend/js/'),
+			path: path.resolve( __dirname, 'build/frontend/js/' ),
 		},
 		optimization: {
 			minimize: isProduction,
@@ -26,11 +26,15 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(__dirname, 'packages', './frontend/style.scss'),
+			index: path.resolve(
+				__dirname,
+				'packages',
+				'./frontend/style.scss'
+			),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, 'build/frontend/css/'),
+			path: path.resolve( __dirname, 'build/frontend/css/' ),
 		},
 		module: {
 			...defaultConfig.module,
@@ -56,21 +60,21 @@ module.exports = [
 		},
 		plugins: [
 			new RemoveEmptyScriptsPlugin(),
-			new MiniCssExtractPlugin({
+			new MiniCssExtractPlugin( {
 				filename: 'style.css',
-			}),
+			} ),
 		],
 	},
 	//Backend
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(__dirname, 'packages', './backend/index.js'),
+			index: path.resolve( __dirname, 'packages', './backend/index.js' ),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, 'build/backend/js/'),
-			library: ['tiktok', 'backend'],
+			path: path.resolve( __dirname, 'build/backend/js/' ),
+			library: [ 'tiktok', 'backend' ],
 			libraryTarget: 'window',
 		},
 		optimization: {
@@ -80,11 +84,15 @@ module.exports = [
 	{
 		...defaultConfig,
 		entry: {
-			index: path.resolve(__dirname, 'packages', './backend/style.scss'),
+			index: path.resolve(
+				__dirname,
+				'packages',
+				'./backend/style.scss'
+			),
 		},
 		output: {
 			filename: '[name].js',
-			path: path.resolve(__dirname, 'build/backend/css/'),
+			path: path.resolve( __dirname, 'build/backend/css/' ),
 		},
 		module: {
 			...defaultConfig.module,
@@ -110,9 +118,9 @@ module.exports = [
 		},
 		plugins: [
 			new RemoveEmptyScriptsPlugin(),
-			new MiniCssExtractPlugin({
+			new MiniCssExtractPlugin( {
 				filename: 'style.css',
-			}),
+			} ),
 		],
 	},
 ];
