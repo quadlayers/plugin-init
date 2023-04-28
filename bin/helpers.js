@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const pluginName = process.env.npm_package_name;
-const pluginFolder = './.plugin/' + pluginName;
+const pluginFolder = pluginName;
 
 /**
  * Copy file from source to target.
