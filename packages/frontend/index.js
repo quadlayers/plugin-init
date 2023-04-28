@@ -1,2 +1,4 @@
+import { __ } from '@wordpress/i18n';
+
 // eslint-disable-next-line no-alert
-alert( 'Frontend!' );
+alert( __( 'Hello world!', 'plugin-init' ) );
