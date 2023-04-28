@@ -13,7 +13,7 @@
 		"tools:report:txt": "php .tools/vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-file=./phpcs_error.txt --extensions=php ./",
 		"tools:report:csv": "php .tools/vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-csv=./phpcs_error.csv --extensions=php ./",
 		"tools:report:xml": "php .tools/vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-xml=./phpcs_error.xml --extensions=php ./",
-		"tools:i18n": "php .tools/vendor/wp-cli/wp-cli/php/boot-fs.php i18n make-pot .plugin/plugin-init .plugin/plugin-init/languages/plugin-init.pot && node ./bin/copy.js ./.plugin/plugin-init/languages/plugin-init.pot ./languages",
+		"tools:i18n": "php .tools/vendor/wp-cli/wp-cli/php/boot-fs.php i18n make-pot .plugin/plugin-init",
 		"preinstall": "npx only-allow pnpm",
 		"delete:build": "node ./bin/delete.js ./build",
 		"delete:lock:js": "node ./bin/delete.js ./package-lock.json ./pnpm-lock.yaml",
@@ -22,7 +22,7 @@
 		"delete:dependencies:js": "node ./bin/delete.js ./node_modules",
 		"delete:dependencies:php": "node ./bin/delete.js ./vendor ./jetpack_vendor",
 		"delete:dependencies": "pnpm run delete:dependencies:js && pnpm run delete:dependencies:php",
-		"delete:plugin": "node ./bin/delete.js ./.plugin",
+		"delete:plugin": "node ./bin/deleteZip.js *.zip",
 		"delete:phpcs_error": "node ./bin/delete.js ./phpcs_error.csv ./phpcs_error.txt",
 		"delete:playwright": "node ./bin/delete.js ./playwright-report ./playwright",
 		"clean:js": "pnpm run delete:build && pnpm run delete:lock:js && pnpm run delete:dependencies:js && pnpm run delete:playwright",
@@ -48,17 +48,16 @@
 		"build:js": "pnpm run delete:build &&  wp-scripts build",
 		"build:php": "composer install --no-dev && composer dump-autoload -o --no-dev",
 		"build": "pnpm run build:js && pnpm run build:php",
-		"build:plugin": "pnpm run delete:plugin && pnpm run build && node ./bin/buildPlugin.js && pnpm run tools:i18n",
+		"build:plugin": "pnpm run delete:plugin && pnpm run build && wp-scripts plugin-zip && pnpm run tools:i18n",
 		"build:plugin:zip": "pnpm run build:plugin && wp-scripts plugin-zip",
-		"build:plugin:wc": "pnpm run delete:plugin && pnpm run build && node ./bin/buildPlugin.js --wc && pnpm run tools:i18n",
+		"build:plugin:wc": "pnpm run delete:plugin && pnpm run build && wp-scripts plugin-zip && pnpm run tools:i18n",
 		"build:plugin:wc:zip": "pnpm run build:plugin:wc && wp-scripts plugin-zip",
 		"format": "wp-scripts format",
 		"format:src": "wp-scripts format ./src",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"lint:md:docs": "wp-scripts lint-md-docs",
-		"lint:pkg-json": "wp-scripts lint-pkg-json",
-		"plugin-zip": "wp-scripts plugin-zip"
+		"lint:pkg-json": "wp-scripts lint-pkg-json"
 	},
 	"lint-staged": {
 		"*.{js,json,ts,tsx,yml,yaml}": [
@@ -76,16 +75,6 @@
 		],
 		"packages/*/package.json": [
 			"wp-scripts lint-pkg-json"
-		],
-		"{docs/{toc.json,tool/*.js},packages/{*/README.md,components/src/*/**/README.md}}": [
-			"node ./docs/tool/index.js"
-		],
-		"packages/**/*.{js,ts,tsx,json}": [
-			"npm run docs:api-ref",
-			"npm run docs:blocks",
-			"npm run docs:theme-ref",
-			"node ./bin/api-docs/are-api-docs-unstaged.js",
-			"node ./bin/packages/lint-staged-typecheck.js"
 		],
 		"**/tsconfig.json": [
 			"npm run lint:tsconfig"
@@ -121,8 +110,5 @@
 		"only-allow": "1.1.1",
 		"sass-loader": "^13.2.0",
 		"webpack-remove-empty-scripts": "0.8.4"
-	},
-	"dependencies": {
-		"zip-a-folder": "^1.1.5"
 	}
 }
