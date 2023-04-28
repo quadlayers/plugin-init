@@ -36,7 +36,6 @@
 		"update": "pnpm run update:js && pnpm run update:php",
 		"format:js": "lint-staged && eslint --fix --ext .js,.jsx .",
 		"format:php": "pnpm run tools:report:autofix",
-		"format": "pnpm run format:js && pnpm run format:php",
 		"test:unit:php": "cd .tools && composer run-script test:phpunit",
 		"test:unit:js": "jest",
 		"test:unit": "pnpm run test:unit:js && pnpm run test:unit:php",
@@ -52,10 +51,62 @@
 		"build:plugin": "pnpm run delete:plugin && pnpm run build && node ./bin/buildPlugin.js && pnpm run tools:i18n",
 		"build:plugin:zip": "pnpm run build:plugin && node ./bin/buildPluginZip.js",
 		"build:plugin:wc": "pnpm run delete:plugin && pnpm run build && node ./bin/buildPlugin.js --wc && pnpm run tools:i18n",
-		"build:plugin:wc:zip": "pnpm run build:plugin:wc && node ./bin/buildPluginZip.js"
+		"build:plugin:wc:zip": "pnpm run build:plugin:wc && node ./bin/buildPluginZip.js",
+		"format": "wp-scripts format",
+		"format:src": "wp-scripts format ./src",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"lint-staged": {
+		"*.{js,json,ts,tsx,yml,yaml}": [
+			"wp-scripts format"
+		],
+		"*.{js,ts,tsx}": [
+			"wp-scripts lint-js"
+		],
+		"*.scss": [
+			"wp-scripts lint-style"
+		],
+		"package-lock.json": [
+			"npm run lint:lockfile",
+			"node ./bin/check-latest-npm.js"
+		],
+		"packages/*/package.json": [
+			"wp-scripts lint-pkg-json"
+		],
+		"{docs/{toc.json,tool/*.js},packages/{*/README.md,components/src/*/**/README.md}}": [
+			"node ./docs/tool/index.js"
+		],
+		"packages/**/*.{js,ts,tsx,json}": [
+			"npm run docs:api-ref",
+			"npm run docs:blocks",
+			"npm run docs:theme-ref",
+			"node ./bin/api-docs/are-api-docs-unstaged.js",
+			"node ./bin/packages/lint-staged-typecheck.js"
+		],
+		"**/tsconfig.json": [
+			"npm run lint:tsconfig"
+		]
 	},
 	"author": "QuadLayers",
 	"license": "ISC",
+	"files": [
+		"jetpack_vendor",
+		"lib",
+		"vendor",
+		"vendor_packages",
+		"build",
+		"languages",
+		"compatibility",
+		"templates",
+		"assets",
+		"wpml-config.xml",
+		"plugin-init.php",
+		"uninstall.php"
+	],
 	"devDependencies": {
 		"@playwright/test": "1.31.2",
 		"@wordpress/scripts": "26.3.0",
@@ -69,7 +120,6 @@
 		"mini-css-extract-plugin": "2.7.3",
 		"node-sass-glob-importer": "5.3.2",
 		"only-allow": "1.1.1",
-		"webpack-remove-empty-scripts": "0.8.4",
-		"zip-a-folder": "1.1.5"
+		"webpack-remove-empty-scripts": "0.8.4"
 	}
 }
