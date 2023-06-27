@@ -15,7 +15,7 @@
 		"tools:report:xml": "php .tools/vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-xml=./phpcs_error.xml --extensions=php ./",
 		"tools:i18n": "php .tools/vendor/wp-cli/wp-cli/php/boot-fs.php i18n make-pot .plugin/plugin-init .plugin/plugin-init/languages/plugin-init.pot && node ./bin/copy.js ./.plugin/plugin-init/languages/plugin-init.pot ./languages",
 		"preinstall": "npx only-allow pnpm",
-		"delete:build": "node ./bin/delete.js ./build",
+		"delete:build": "node ./bin/delete.js ./build ./languages/plugin-init.pot",
 		"delete:lock:js": "node ./bin/delete.js ./package-lock.json ./pnpm-lock.yaml",
 		"delete:lock:php": "node ./bin/delete.js ./composer.lock ",
 		"delete:lock": "pnpm run delete:lock:js && pnpm run delete:lock:php",
@@ -46,7 +46,7 @@
 		"start:js": "pnpm run delete:build && wp-scripts start",
 		"start:php": "pnpm run setup:php && composer dump-autoload",
 		"start": "pnpm run start:php && pnpm run start:js",
-		"build:js": "pnpm run delete:build &&  wp-scripts build",
+		"build:js": "pnpm run delete:build && wp-scripts build",
 		"build:php": "composer install --no-dev && composer dump-autoload -o --no-dev",
 		"build": "pnpm run build:js && pnpm run build:php",
 		"build:plugin": "pnpm run delete:plugin && pnpm run build && node ./bin/buildPlugin.js && pnpm run tools:i18n",
@@ -68,6 +68,7 @@
 		"mini-css-extract-plugin": "2.7.3",
 		"node-sass-glob-importer": "5.3.2",
 		"only-allow": "1.1.1",
+		"sass-loader": "^13.3.2",
 		"webpack-remove-empty-scripts": "0.8.4",
 		"zip-a-folder": "1.1.5"
 	}
