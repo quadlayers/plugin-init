@@ -1,4 +1,4 @@
-{ 
+{
 	"name": "quadlayers/tools",
 	"description": "QuadLayers Tools",
 	"type": "project",
@@ -27,6 +27,6 @@
 		"wp-cli/i18n-command": "*"
 	},
 	"scripts": {
-		"test:phpunit": "./vendor/bin/phpunit ../phpunit"
+		"test:phpunit": "./vendor/bin/phpunit ../tests/phpunit"
 	}
 }
