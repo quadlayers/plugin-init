@@ -10,5 +10,4 @@
 /playwright
 /.plugin
 **/test/**
-/bin
 playwright.config.js
