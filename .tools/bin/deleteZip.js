@@ -1,18 +1,24 @@
+// deleteZip.js
 const fs = require( 'fs' );
-const { consoleSuccess } = require( './helpers' );
+const path = require( 'path' );
 
-const args = process.argv.slice( 2 );
+const { pluginName } = require( './helpers' );
 
-// For each argument/file
-args.forEach( ( file ) => {
-	// Delete only if the file ends with .zip
-	if ( file.endsWith( '.zip' ) ) {
-		fs.rm( file, { recursive: true }, ( err ) => {
-			if ( err ) {
-				console.log( err );
-			} else {
-				consoleSuccess( `${ file } deleted` );
-			}
-		} );
-	}
-} );
+// Get the base directory of the project
+const baseDir = process.cwd();
+
+// Define the zip file
+const zipFile = path.join( baseDir, `${ pluginName }.zip` );
+
+// Check if the zip file exists
+
+if ( fs.existsSync( zipFile ) ) {
+	// Delete the zip file
+	fs.unlink( zipFile, ( error ) => {
+		if ( error ) {
+			console.error( `Failed to delete ${ zipFile }:`, error );
+		} else {
+			console.log( `${ zipFile } has been deleted.` );
+		}
+	} );
+}
