@@ -2,16 +2,7 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 const { execSync } = require( 'child_process' );
-const { pluginName } = require( './helpers' );
-
-// Get the base directory of the project
-const baseDir = process.cwd();
-
-// Read the package.json file
-const packageJson = require( path.join( baseDir, 'package.json' ) );
-
-// Get the package name and replace any invalid characters
-// const pluginName = packageJson.name.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+const { baseDir, pluginName, pluginFiles } = require( './helpers' );
 
 // Define the output directory and file
 const outputDir = path.join( baseDir, 'languages' );
@@ -22,14 +13,18 @@ if ( ! fs.existsSync( outputDir ) ) {
 	fs.mkdirSync( outputDir );
 }
 
-// Define the include list
-const include = packageJson.files.join( ',' );
-
 // Define the exclude list
-const exclude = 'vendor,node_modules,tests';
+const excludeFiles = [ 'node_modules', 'languages', 'vendor', 'tests' ];
+
+// Filtered include files
+const includeFiles = pluginFiles.filter(
+	( file ) => ! excludeFiles.includes( file )
+);
 
 // Construct the command
-const command = `php .tools/vendor/wp-cli/wp-cli/php/boot-fs.php i18n make-pot ${ baseDir } ${ outputFile } --include=${ include } --exclude=${ exclude }`;
+const command = `php .tools/vendor/wp-cli/wp-cli/php/boot-fs.php i18n make-pot ${ baseDir } ${ outputFile } --include=${ includeFiles.join(
+	','
+) }`;
 
 try {
 	// Run the command

@@ -1,8 +1,14 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
+// Get the base directory of the project
+const baseDir = process.cwd();
 
-const pluginName = process.env.npm_package_name;
-const pluginFolder = pluginName;
+const packageJson = require( path.join( baseDir, 'package.json' ) );
+const pluginFolder = packageJson.name;
+const pluginName = packageJson.name;
+const pluginFiles = packageJson.files.filter( ( file ) =>
+	fs.existsSync( path.join( baseDir, file ) )
+);
 
 /**
  * Copy file from source to target.
@@ -121,8 +127,11 @@ const consoleInfo = ( message ) => {
 	console.log( '\x1b[36m%s\x1b[0m', message );
 };
 
+module.exports.baseDir = baseDir;
 module.exports.pluginName = pluginName;
 module.exports.pluginFolder = pluginFolder;
+module.exports.packageJson = packageJson;
+module.exports.pluginFiles = pluginFiles;
 module.exports.copyFromToArr = copyFromToArr;
 module.exports.deleteFromPluginFolder = deleteFromPluginFolder;
 module.exports.consoleSuccess = consoleSuccess;
