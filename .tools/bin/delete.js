@@ -1,5 +1,5 @@
 const fs = require( 'fs' );
-const { consoleSuccess } = require( './helpers' );
+const { consoleSuccess } = require( './helpers/console' );
 
 //Get arguments
 const myArgs = process.argv.slice( 2 );

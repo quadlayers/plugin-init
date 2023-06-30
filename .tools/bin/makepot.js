@@ -2,7 +2,7 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 const { execSync } = require( 'child_process' );
-const { baseDir, pluginName, pluginFiles } = require( './helpers' );
+const { baseDir, pluginName, pluginFiles } = require( './helpers/functions' );
 
 // Define the output directory and file
 const outputDir = path.join( baseDir, 'languages' );

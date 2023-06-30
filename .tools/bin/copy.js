@@ -1,5 +1,9 @@
 const fs = require( 'fs' );
-const { copyFileFromTo, consoleSuccess, consoleError } = require( './helpers' );
+const {
+	copyFileFromTo,
+	consoleSuccess,
+	consoleError,
+} = require( './helpers/functions' );
 
 //Get arguments
 const myArgs = process.argv.slice( 2 );

@@ -1,0 +1,7 @@
+{
+	"name": "plugin-init-for-woocommerce",
+	"header": "https://woocommerce.com/document/create-a-plugin/#section-12",
+	"replacements": {
+		"this": "to"
+	}
+}

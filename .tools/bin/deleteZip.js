@@ -2,7 +2,7 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 
-const { pluginName } = require( './helpers' );
+const { pluginName } = require( './helpers/functions' );
 
 // Get the base directory of the project
 const baseDir = process.cwd();

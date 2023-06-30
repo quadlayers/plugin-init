@@ -1,5 +1,5 @@
 const { execSync } = require( 'child_process' );
-const { pluginFiles } = require( './helpers' );
+const { pluginFiles } = require( './helpers/functions' );
 
 // Define the exclude list
 const excludeFiles = [
