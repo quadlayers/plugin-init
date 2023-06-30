@@ -1,47 +1,48 @@
+const { consoleSuccess, consoleError } = require( './helpers/console' );
+const { compressFromTo } = require( './helpers/functions' );
+
+//Get arguments
+// const myArgs = process.argv.slice( 2 );
+
+// //Foreach arguments/folders
+// myArgs.forEach( ( element ) => {
+// 	compressFromTo( element, `${ element }.zip` ).then(
+// 		function ( err ) {
+// 			err ?? consoleSuccess( `${ element } compressed` );
+// 		},
+// 		function ( err ) {
+// 			consoleError( `${ err }` );
+// 		}
+// 	);
+// } );
+
 const fs = require( 'fs' );
 const path = require( 'path' );
-const { zip, COMPRESSION_LEVEL } = require( 'zip-a-folder' );
+const { promisify } = require( 'util' );
 
-const {
-	pluginName,
-	pluginFolder,
-	consoleError,
-	consoleSuccess,
-} = require( './helpers/functions' );
+const readdir = promisify( fs.readdir );
 
-/**
- * Compresses a folder to the specified zip file.
- *
- * @param {string} folder
- * @param {string} filePath
- * @param          source
- * @param          target
- */
-const compressFromTo = async ( source, target ) => {
-	const sourcePath = path.resolve( source );
-	const targetPath = path.resolve( target );
-	return await zip( sourcePath, targetPath, {
-		compression: COMPRESSION_LEVEL.high,
-	} );
+const compressPluginDirectories = async () => {
+	const pluginDir = './.plugin';
+
+	// Read the contents of the plugin directory
+	const files = await readdir( pluginDir );
+
+	// Filter out any files that are not directories
+	const directories = files.filter( ( file ) =>
+		fs.statSync( path.join( pluginDir, file ) ).isDirectory()
+	);
+
+	// Compress each directory
+	for ( let dir of directories ) {
+		const source = path.join( pluginDir, dir );
+		const target = `${ source }.zip`;
+
+		await compressFromTo( source, target ).then(
+			() => consoleSuccess( `${ source } compressed` ),
+			( err ) => consoleError( `${ err }` )
+		);
+	}
 };
 
-const _pluginFolder = pluginFolder.substring(
-	0,
-	pluginFolder.lastIndexOf( '/' )
-);
-const _pluginFileZipTemp = './.plugin.zip';
-const _pluginFileZip = _pluginFolder + '/' + pluginName + '.zip';
-//Create zip
-compressFromTo( _pluginFolder, _pluginFileZipTemp ).then(
-	function ( err ) {
-		fs.rename( _pluginFileZipTemp, _pluginFileZip, function ( err ) {
-			//Show status
-			err ?? consoleSuccess( `${ _pluginFolder } compressed` );
-		} );
-	},
-	function ( err ) {
-		//Show status
-		consoleError( `${ _pluginFolder } not compressed` );
-		consoleError( `${ err }` );
-	}
-);
+compressPluginDirectories();
