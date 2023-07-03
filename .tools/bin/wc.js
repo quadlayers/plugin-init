@@ -12,7 +12,6 @@ const wcJson = require( path.join( baseDir, '.wc.json' ) );
 const {
 	pluginName: pluginOldName,
 	deleteThisFrom,
-	copyFromTo,
 	cloneDirectory,
 } = require( './helpers/functions' );
 
