@@ -3,11 +3,13 @@
 /assets
 /tests
 /jetpack_vendor
-/build
+/phpunit
+/dist
 /artifacts
 /test-results
 /playwright-report
 /playwright
 /.plugin
 **/test/**
+/bin
 playwright.config.js

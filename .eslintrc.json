@@ -7,10 +7,6 @@
 	"rules": {
 		"react/prop-types": "off",
 		"jsdoc/check-tag-names": "off",
-		"jsx-a11y/label-has-associated-control": "off",
-		"import/no-unresolved": [
-			"error",
-			{ "ignore": [ "^jquery$", "preact", "@wordpress" ] }
-		]
+		"camelcase": "off"
 	}
 }
