@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:             {{plugin-title}}
- * Plugin URI:              https://quadlayers.com/portfolio/{{plugin-name}}
+ * Plugin URI:              https://quadlayers.com/products/{{plugin-name}}
  * Description:             {{plugin-title}} description
  * Version:                 1.0.0
  * Text Domain:             {{plugin-name}}
@@ -35,7 +35,7 @@ define( 'QLXXX_PREFIX', QLXXX_DOMAIN );
 define( 'QLXXX_WORDPRESS_URL', 'https://wordpress.org/plugins/{{plugin-name}}/' );
 define( 'QLXXX_REVIEW_URL', 'https://wordpress.org/support/plugin/{{plugin-name}}/reviews/?filter=5#new-post' );
 define( 'QLXXX_DEMO_URL', 'https://quadlayers.com/demo/{{plugin-name}}/?utm_source=qlxxx_admin' );
-define( 'QLXXX_PURCHASE_URL', 'https://quadlayers.com/portfolio/{{plugin-name}}/?utm_source=qlxxx_admin' );
+define( 'QLXXX_PURCHASE_URL', 'https://quadlayers.com/products/{{plugin-name}}/?utm_source=qlxxx_admin' );
 define( 'QLXXX_SUPPORT_URL', 'https://quadlayers.com/account/support/?utm_source=qlxxx_admin' );
 define( 'QLXXX_DOCUMENTATION_URL', 'https://quadlayers.com/documentation/{{plugin-name}}/?utm_source=qlxxx_admin' );
 define( 'QLXXX_DOCUMENTATION_API_URL', 'https://quadlayers.com/documentation/{{plugin-name}}/api/?utm_source=qlxxx_admin' );

@@ -18,7 +18,7 @@
 		"/(\\* WC tested up to):\\s+/": "$1: ",
 		"/\\* WC tested up to:\\s*\\d+\\.\\d+/": "$&\n * Woo: test",
 		"https://quadlayers.com": "https://woocommerce.com/vendor/quadlayers",
-		"https://quadlayers.com/portfolio/{{plugin-name}}": "https://woocommerce.com/product/{{plugin-name}}",
+		"https://quadlayers.com/products/{{plugin-name}}": "https://woocommerce.com/product/{{plugin-name}}",
 		"require_once __DIR__ . '/vendor_packages/wp-notice-plugin-required.php';": "",
 		"require_once __DIR__ . '/vendor_packages/wp-license-client.php';": ""
 	}
